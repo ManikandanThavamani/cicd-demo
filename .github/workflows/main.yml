@@ -27,3 +27,16 @@ jobs:
     - name: Run Unit Tests
       run: |
         pytest test_app.py
+# ... (keep the build-and-test job exactly as it was above)
+
+  deploy:
+    needs: build-and-test # CRITICAL: Deploy ONLY happens if tests pass!
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Deploy to Production
+      run: |
+        echo "Tests passed! Simulating deployment to production server..."
+        echo "Copying files to server..."
+        echo "Restarting application..."
+        echo "Deployment Successful! 🚀"
